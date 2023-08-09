@@ -162,7 +162,7 @@ class MyPaintWidget(Widget):
         with self.canvas:
             Color(0.8,0.7,0)
             d = 10.
-            touch.ud['line'] = Line(points = (touch.x, touch.y), width = 10)
+            touch.ud['line'] = Line(points=(touch.x, touch.y), width=10)
             last_x = int(touch.x)
             last_y = int(touch.y)
             n_points = 0
@@ -179,7 +179,7 @@ class MyPaintWidget(Widget):
             n_points += 1.
             density = n_points/(length)
             touch.ud['line'].width = int(20 * density + 1)
-            sand[int(touch.x) - 10 : int(touch.x) + 10, int(touch.y) - 10 : int(touch.y) + 10] = 1
+            sand[int(touch.x)-10:int(touch.x)+10, int(touch.y)-10:int(touch.y)+10] = 1
             last_x = x
             last_y = y
 
@@ -191,12 +191,12 @@ class CarApp(App):
         parent.serve_car()
         Clock.schedule_interval(parent.update, 1.0/60.0)
         self.painter = MyPaintWidget()
-        clearbtn = Button(text = 'clear')
-        savebtn = Button(text = 'save', pos = (parent.width, 0))
-        loadbtn = Button(text = 'load', pos = (2 * parent.width, 0))
-        clearbtn.bind(on_release = self.clear_canvas)
-        savebtn.bind(on_release = self.save)
-        loadbtn.bind(on_release = self.load)
+        clearbtn = Button(text='clear')
+        savebtn = Button(text='save', pos=(parent.width, 0))
+        loadbtn = Button(text='load', pos=(2 * parent.width, 0))
+        clearbtn.bind(on_release=self.clear_canvas)
+        savebtn.bind(on_release=self.save)
+        loadbtn.bind(on_release=self.load)
         parent.add_widget(self.painter)
         parent.add_widget(clearbtn)
         parent.add_widget(savebtn)
